@@ -11,17 +11,14 @@ const API_URL = "https://shakespeare.podium.com/api/reviews";
 function App() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
+    async function getReviews() {
+      const res = await fetch(API_URL, { headers: { "x-api-key": API_KEY } });
+      const data = await res.json();
+      setReviews(data);
+    }
+
     getReviews();
   }, []);
-
-  const getReviews = () => {
-    fetch(API_URL, { headers: { 'x-api-key': API_KEY }})
-      .then((response) => response.json())
-      .then(
-        (data) => setReviews([...data]),
-        (error) => console.error(error)
-      );
-  };
 
   return (
     <Container fluid>
