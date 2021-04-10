@@ -35,18 +35,21 @@ function App() {
     setFilteredReviews(results);
   }, [reviews, ratingFilter]);
 
-  const ratingsBadges = [1, 2, 3, 4, 5].map((val, idx) => (
-    <Badge variant="secondary" key={idx} onClick={() => setRatingFilter(val)}>
-      {val}
-    </Badge>
-  ));
+  const ratingsBadges = [1, 2, 3, 4, 5].map((val, idx) => {
+    const active = ((idx + 1) === ratingFilter) ? 'primary' : 'secondary';
+    return (
+      <Badge variant={active} key={idx} onClick={() => setRatingFilter(val)}>
+        {val}
+      </Badge>
+    );
+  });
 
   return (
     <Container fluid>
       <Row>
         <Col>
           <h1>Shakespear Quote Reviews</h1>
-          Ratings: {ratingsBadges} 
+          Ratings: {ratingsBadges}
         </Col>
       </Row>
       <Row>
