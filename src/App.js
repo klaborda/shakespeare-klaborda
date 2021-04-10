@@ -68,7 +68,7 @@ function App() {
               <Card.Body>
                 <Card.Title>{review.author}</Card.Title>
                 <Card.Subtitle>
-                  Rating: {review.rating} @{" "}
+                  Rating: <b>{review.rating}</b> @{' '}
                   <Moment format="YYYY/MM/DD">{review.publish_date}</Moment>
                 </Card.Subtitle>
                 <Card.Text>{review.body}</Card.Text>
