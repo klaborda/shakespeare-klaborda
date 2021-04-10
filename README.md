@@ -1,4 +1,4 @@
-# Shakespear - KLABORDA
+# Shakespeare Reviews - KLABORDA
 
 This project utilizes a Shakespeare Reviews API to render the information to the UI
 
