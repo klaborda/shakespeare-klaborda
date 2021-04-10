@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Moment from "react-moment";
 import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 import RatingBadges from './RatingBadges';
+import ReviewDisplay from './ReviewDisplay';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -53,16 +52,7 @@ function App() {
       <Row>
         {filteredReviews &&
           filteredReviews.map((review) => (
-            <Card key={review.id} className="m-1" style={{ width: "14rem" }}>
-              <Card.Body>
-                <Card.Title>{review.author}</Card.Title>
-                <Card.Subtitle>
-                  Rating: <b>{review.rating}</b> @{' '}
-                  <Moment format="YYYY/MM/DD">{review.publish_date}</Moment>
-                </Card.Subtitle>
-                <Card.Text>{review.body}</Card.Text>
-              </Card.Body>
-            </Card>
+            <ReviewDisplay key={review.id} review={review} />
           ))}
       </Row>
     </Container>
