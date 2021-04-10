@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Shakespear - KLABORDA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project utilizes a Shakespeare Reviews API to render the information to the UI
 
 ## Available Scripts
 
@@ -9,6 +9,7 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app in the development mode.\
+Setup a `.env.local` with a `REACT_APP_API_KEY` value to ensure that the API can be accessed
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
