@@ -45,7 +45,7 @@ function App() {
     <Container fluid>
       <Row>
         <Col>
-          <h1>Shakespear Quote Reviews</h1>
+          <h1>Shakespeare Quote Reviews</h1>
           <RatingBadges ratingFilter={ratingFilter} handleClick={handleClick} />
         </Col>
       </Row>
