@@ -3,8 +3,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Moment from "react-moment";
 import Col from "react-bootstrap/Col";
-import Badge from "react-bootstrap/Badge";
 import Card from "react-bootstrap/Card";
+import RatingBadges from './RatingBadges';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -38,19 +38,8 @@ function App() {
     setFilteredReviews(results);
   }, [reviews, ratingFilter]);
 
-  // create badges for filtering the ratings
-  const ratingsBadges = [1, 2, 3, 4, 5].map((val, idx) => {
-    // handle styling to show the active badge
-    const active = ((idx + 1) === ratingFilter) ? 'primary' : 'secondary';
-    return (
-      <Badge variant={active} key={idx} onClick={() => setRatingFilter(val)}>
-        {val}
-      </Badge>
-    );
-  });
-  // if filter is set, provide a way of clearing it
-  if (ratingFilter) {
-    ratingsBadges.push(<Badge variant="info" onClick={() => setRatingFilter()}>Clear</Badge>);
+  const handleClick = (val) =>{
+    setRatingFilter(val);
   }
 
   return (
@@ -58,7 +47,7 @@ function App() {
       <Row>
         <Col>
           <h1>Shakespear Quote Reviews</h1>
-          Ratings: {ratingsBadges}
+          <RatingBadges ratingFilter={ratingFilter} handleClick={handleClick} />
         </Col>
       </Row>
       <Row>
