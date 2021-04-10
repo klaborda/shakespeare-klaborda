@@ -32,7 +32,7 @@ function App() {
     const results =
       ratingFilter !== undefined
         ? reviews.filter(
-            (r) => r.rating >= ratingFilter - 1 && r.rating <= ratingFilter
+            (r) => r.rating < (ratingFilter + 1) && r.rating >= ratingFilter
           )
         : reviews;
     setFilteredReviews(results);
@@ -64,7 +64,7 @@ function App() {
       <Row>
         {filteredReviews &&
           filteredReviews.map((review) => (
-            <Card key={review.id} style={{ width: "12rem" }}>
+            <Card key={review.id} className="m-1" style={{ width: "14rem" }}>
               <Card.Body>
                 <Card.Title>{review.author}</Card.Title>
                 <Card.Subtitle>
