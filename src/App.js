@@ -12,9 +12,11 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = "https://shakespeare.podium.com/api/reviews";
 
 function App() {
+  // initial state setup
   const [reviews, setReviews] = useState([]);
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [ratingFilter, setRatingFilter] = useState();
+  // handle the initial API call for loading
   useEffect(() => {
     async function getReviews() {
       const res = await fetch(API_URL, { headers: { "x-api-key": API_KEY } });
@@ -25,6 +27,7 @@ function App() {
     getReviews();
   }, []);
 
+  // handling filtering of the data
   useEffect(() => {
     const results =
       ratingFilter !== undefined
@@ -35,7 +38,9 @@ function App() {
     setFilteredReviews(results);
   }, [reviews, ratingFilter]);
 
+  // create badges for filtering the ratings
   const ratingsBadges = [1, 2, 3, 4, 5].map((val, idx) => {
+    // handle styling to show the active badge
     const active = ((idx + 1) === ratingFilter) ? 'primary' : 'secondary';
     return (
       <Badge variant={active} key={idx} onClick={() => setRatingFilter(val)}>
@@ -43,6 +48,10 @@ function App() {
       </Badge>
     );
   });
+  // if filter is set, provide a way of clearing it
+  if (ratingFilter) {
+    ratingsBadges.push(<Badge variant="info" onClick={() => setRatingFilter()}>Clear</Badge>);
+  }
 
   return (
     <Container fluid>
